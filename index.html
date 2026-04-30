@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HomeTriage — Professional home audits, delivered in 24 hours</title>
+<meta name="description" content="Submit 3–5 photos of your home. Get a professional PDF audit in 24 hours: prioritized task list, cost estimates, and ready-to-post job descriptions." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Tokens ---------- */
+  :root {
+    --bg: #faf7f2;          /* warm off-white */
+    --bg-2: #f3ede3;        /* warm sand */
+    --ink: #1f2422;         /* near-black warm */
+    --ink-2: #4a4f4c;       /* warm gray text */
+    --muted: #8a8b86;
+    --line: #e6dfd2;
+    --accent: #0f4c43;      /* deep forest teal */
+    --accent-2: #0c3d36;
+    --accent-soft: #d8e6e2;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 2px rgba(20, 30, 28, 0.06);
+    --shadow-md: 0 10px 30px rgba(20, 30, 28, 0.08);
+    --shadow-lg: 0 24px 60px rgba(20, 30, 28, 0.12);
+    --radius: 14px;
+    --radius-lg: 22px;
+    --max: 1200px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 0.5em;
+    line-height: 1.1;
+  }
+
+  .container {
+    width: 100%;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-primary:hover { background: var(--accent-2); box-shadow: var(--shadow-md); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+  }
+  .btn-secondary:hover { border-color: var(--ink); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border-color: transparent;
+  }
+  .btn-sm { padding: 10px 16px; font-size: 14px; }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease, box-shadow 0.25s ease;
+  }
+  .nav.scrolled {
+    background: rgba(250, 247, 242, 0.85);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom-color: var(--line);
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .logo-mark {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff;
+  }
+  .logo-mark svg { width: 16px; height: 16px; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 56px 0 88px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(15, 76, 67, 0.08), transparent 60%),
+      radial-gradient(700px 400px at 0% 30%, rgba(216, 230, 226, 0.6), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 6px 12px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-size: clamp(40px, 6vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 560px;
+    margin: 0 0 32px;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .hero-meta .pip {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--muted);
+    display: inline-block;
+  }
+
+  /* Hero illustration */
+  .hero-art {
+    position: relative;
+    aspect-ratio: 5 / 4;
+    width: 100%;
+  }
+  .hero-art .room {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, #f7f1e6 0%, #ece2cf 100%);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--line);
+  }
+  /* Room scene built with CSS */
+  .room .floor {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 32%;
+    background: linear-gradient(180deg, #d9c8a8, #c8b48d);
+  }
+  .room .wall-shadow {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 68%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.04), transparent 60%);
+  }
+  .room .window {
+    position: absolute;
+    top: 14%; left: 10%;
+    width: 30%; height: 38%;
+    background: linear-gradient(180deg, #e9f1ee, #cfe1da);
+    border: 6px solid #f7f1e6;
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 2px #c8b48d, var(--shadow-sm);
+  }
+  .room .window::before, .room .window::after {
+    content: "";
+    position: absolute;
+    background: #f7f1e6;
+  }
+  .room .window::before { top: 0; bottom: 0; left: 50%; width: 4px; transform: translateX(-50%); }
+  .room .window::after  { left: 0; right: 0; top: 50%; height: 4px; transform: translateY(-50%); }
+
+  .room .lamp {
+    position: absolute;
+    top: 20%; right: 16%;
+    width: 70px; height: 110px;
+  }
+  .room .lamp .shade {
+    width: 70px; height: 44px;
+    background: linear-gradient(180deg, #efe2c4, #d9c08a);
+    border-radius: 6px 6px 30px 30px / 6px 6px 14px 14px;
+  }
+  .room .lamp .stem {
+    width: 4px; height: 50px;
+    background: #5a4a32;
+    margin: 0 auto;
+  }
+  .room .lamp .base {
+    width: 36px; height: 8px;
+    background: #5a4a32;
+    margin: 0 auto;
+    border-radius: 3px;
+  }
+
+  .room .sofa {
+    position: absolute;
+    bottom: 18%;
+    left: 18%;
+    width: 56%;
+    height: 26%;
+  }
+  .room .sofa .back {
+    position: absolute;
+    bottom: 30%; left: 0; right: 0;
+    height: 70%;
+    background: linear-gradient(180deg, #0f4c43, #0c3d36);
+    border-radius: 14px 14px 6px 6px;
+  }
+  .room .sofa .seat {
+    position: absolute;
+    bottom: 0; left: -3%; right: -3%;
+    height: 44%;
+    background: #133e38;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+  }
+  .room .sofa .pillow {
+    position: absolute;
+    bottom: 38%;
+    width: 22%; height: 38%;
+    background: #e9d6a8;
+    border-radius: 8px;
+  }
+  .room .sofa .p1 { left: 6%; }
+  .room .sofa .p2 { right: 6%; background: #c9b27e; }
+
+  .room .plant {
+    position: absolute;
+    bottom: 18%;
+    right: 8%;
+    width: 60px; height: 90px;
+  }
+  .room .plant .pot {
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 44px; height: 32px;
+    background: linear-gradient(180deg, #b5763b, #8a5526);
+    border-radius: 6px 6px 10px 10px;
+  }
+  .room .plant .leaf {
+    position: absolute;
+    bottom: 26px;
+    width: 18px; height: 38px;
+    background: #2f6b56;
+    border-radius: 60% 60% 40% 40% / 70% 70% 30% 30%;
+    transform-origin: bottom center;
+  }
+  .room .plant .l1 { left: 8px; transform: rotate(-18deg); }
+  .room .plant .l2 { left: 50%; margin-left: -9px; }
+  .room .plant .l3 { right: 8px; transform: rotate(18deg); }
+
+  .room .frame {
+    position: absolute;
+    top: 18%;
+    left: 48%;
+    width: 18%; height: 22%;
+    background: #fff;
+    border: 5px solid #f7f1e6;
+    box-shadow: inset 0 0 0 1px #c8b48d, var(--shadow-sm);
+  }
+  .room .frame::after {
+    content: "";
+    position: absolute; inset: 8%;
+    background: linear-gradient(135deg, #d8e6e2, #a8c4bb 60%, #6f9c91);
+  }
+
+  /* Checklist overlay */
+  .checklist {
+    position: absolute;
+    right: -18px;
+    bottom: 8%;
+    width: 62%;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--line);
+    transform: rotate(-1.5deg);
+  }
+  .checklist h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 12px;
+  }
+  .checklist ul {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .checklist li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .checklist .box {
+    width: 18px; height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid var(--line);
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    background: #fff;
+  }
+  .checklist li.done .box {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .checklist li.done .box svg { width: 12px; height: 12px; }
+  .checklist li.done span { color: var(--muted); text-decoration: line-through; }
+  .checklist .price {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .floating-tag {
+    position: absolute;
+    top: 6%;
+    left: -14px;
+    background: var(--ink);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    box-shadow: var(--shadow-md);
+    transform: rotate(-3deg);
+  }
+  .floating-tag .accent { color: #9fd5c8; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .hero { padding: 32px 0 72px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-art { max-width: 520px; margin: 0 auto; }
+    .checklist { right: 0; width: 70%; }
+  }
+  @media (max-width: 520px) {
+    .nav-inner { height: 64px; }
+    .btn { padding: 12px 18px; font-size: 14px; }
+    .hero { padding: 24px 0 56px; }
+    .hero-sub { font-size: 16px; }
+    .hero-ctas { width: 100%; }
+    .hero-ctas .btn { flex: 1; min-width: 140px; }
+    .checklist { width: 78%; padding: 14px 16px; }
+    .floating-tag { font-size: 11px; padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Nav ===== -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo" aria-label="HomeTriage home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 11.5 12 4l9 7.5"/>
+          <path d="M5 10v10h14V10"/>
+          <path d="M10 20v-5h4v5"/>
+        </svg>
+      </span>
+      HomeTriage
+    </a>
+    <a href="#order" class="btn btn-primary btn-sm">Get My Audit — $79</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span>Professional home audits</span>
+        <h1>Your home has a punch list. <em>We'll write it for you.</em></h1>
+        <p class="hero-sub">
+          Send us 3–5 photos of any room. Within 24 hours you'll get a professional PDF audit — a prioritized task list, realistic cost estimates, and ready-to-post job descriptions for TaskRabbit and Thumbtack.
+        </p>
+        <div class="hero-ctas">
+          <a href="#order" class="btn btn-primary">Get My Audit</a>
+          <a href="#sample" class="btn btn-secondary">See a Sample Report</a>
+        </div>
+        <div class="hero-meta">
+          <span>24-hour turnaround</span>
+          <span class="pip"></span>
+          <span>No subscription</span>
+          <span class="pip"></span>
+          <span>One flat fee</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="room">
+          <div class="wall-shadow"></div>
+          <div class="window"></div>
+          <div class="frame"></div>
+          <div class="lamp">
+            <div class="shade"></div>
+            <div class="stem"></div>
+            <div class="base"></div>
+          </div>
+          <div class="floor"></div>
+          <div class="sofa">
+            <div class="back"></div>
+            <div class="pillow p1"></div>
+            <div class="pillow p2"></div>
+            <div class="seat"></div>
+          </div>
+          <div class="plant">
+            <div class="leaf l1"></div>
+            <div class="leaf l2"></div>
+            <div class="leaf l3"></div>
+            <div class="pot"></div>
+          </div>
+        </div>
+
+        <div class="floating-tag">Living Room <span class="accent">· Audit #2841</span></div>
+
+        <div class="checklist">
+          <h4>Punch list</h4>
+          <ul>
+            <li class="done">
+              <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Patch drywall near window</span>
+              <span class="price">$120</span>
+            </li>
+            <li class="done">
+              <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span>Replace baseboards (south wall)</span>
+              <span class="price">$340</span>
+            </li>
+            <li>
+              <span class="box"></span>
+              <span>Repaint trim — semi-gloss white</span>
+              <span class="price">$210</span>
+            </li>
+            <li>
+              <span class="box"></span>
+              <span>Install dimmer on overhead</span>
+              <span class="price">$85</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- More sections coming next -->
+
+</main>
+
+<script>
+  // Sticky nav background on scroll
+  (function () {
+    var nav = document.getElementById('nav');
+    var threshold = 12;
+    function onScroll() {
+      if (window.scrollY > threshold) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
