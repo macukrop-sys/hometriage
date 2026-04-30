@@ -421,6 +421,230 @@
   }
   .floating-tag .accent { color: #9fd5c8; }
 
+  /* ---------- Testimonials ---------- */
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .testimonial {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .testimonial .quote-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    line-height: 0.6;
+    color: var(--accent);
+    height: 22px;
+  }
+  .testimonial blockquote {
+    margin: 0;
+    font-size: 16.5px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .testimonial .who {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .testimonial .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .testimonial .who-text { line-height: 1.3; }
+  .testimonial .name { font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .testimonial .role { font-size: 13px; color: var(--muted); }
+
+  /* ---------- FAQ ---------- */
+  .faq {
+    max-width: 760px;
+    margin: 0 auto;
+    border-top: 1px solid var(--line);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-q {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    text-align: left;
+    font-family: 'Fraunces', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    letter-spacing: -0.01em;
+  }
+  .faq-q .chev {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--bg-2);
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, background 0.2s ease;
+  }
+  .faq-q .chev svg { width: 14px; height: 14px; transition: transform 0.25s ease; }
+  .faq-item.open .faq-q .chev { background: var(--accent-soft); }
+  .faq-item.open .faq-q .chev svg { transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .faq-a-inner {
+    padding: 0 0 22px;
+    color: var(--ink-2);
+    font-size: 16px;
+    max-width: 660px;
+  }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta {
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    padding: 96px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(600px 320px at 12% 20%, rgba(255,255,255,0.08), transparent 60%),
+      radial-gradient(700px 360px at 88% 90%, rgba(159, 213, 200, 0.18), transparent 60%);
+    pointer-events: none;
+  }
+  .final-cta .inner { position: relative; max-width: 760px; margin: 0 auto; }
+  .final-cta h2 {
+    color: #fff;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .final-cta p {
+    color: #cfe1da;
+    font-size: 18px;
+    margin: 0 0 32px;
+  }
+  .final-cta .btn-primary {
+    background: #fff;
+    color: var(--accent);
+    padding: 18px 30px;
+    font-size: 16px;
+  }
+  .final-cta .btn-primary:hover { background: #f3ede3; color: var(--accent-2); }
+
+  /* ---------- Order placeholder ---------- */
+  .order {
+    padding: 88px 0;
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+  }
+  .order-card {
+    max-width: 640px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .order-card h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  .order-card p {
+    color: var(--ink-2);
+    margin: 0 0 24px;
+  }
+  .order-card .btn-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .order-card .small {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 18px;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    background: var(--ink);
+    color: #cfd2d0;
+    padding: 56px 0 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .footer .logo { color: #fff; }
+  .footer .logo-mark { background: var(--accent); }
+  .footer .tagline {
+    margin: 14px 0 0;
+    color: #9aa09d;
+    max-width: 360px;
+    font-size: 15px;
+  }
+  .footer-links {
+    display: flex;
+    gap: 28px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    color: #cfd2d0;
+    font-size: 15px;
+    transition: color 0.2s ease;
+  }
+  .footer-links a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid #2c3331;
+    margin-top: 40px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    color: #7c817f;
+    font-size: 13.5px;
+  }
+
   /* ---------- Section primitives ---------- */
   .section { padding: 96px 0; }
   .section-tight { padding: 72px 0; }
@@ -660,6 +884,10 @@
     .steps::before { display: none; }
     .features { grid-template-columns: repeat(2, 1fr); }
     .pricing { grid-template-columns: 1fr; }
+    .testimonials { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-links { justify-content: flex-start; }
+    .final-cta { padding: 72px 24px; }
   }
   @media (max-width: 520px) {
     .nav-inner { height: 64px; }
@@ -676,6 +904,9 @@
     .features { grid-template-columns: 1fr; }
     .price-card { padding: 28px 24px; }
     .price { font-size: 44px; }
+    .order-card { padding: 28px 22px; }
+    .order-card .btn-row .btn { flex: 1; min-width: 140px; }
+    .faq-q { font-size: 17px; padding: 18px 0; }
   }
 </style>
 </head>
@@ -711,7 +942,7 @@
         </p>
         <div class="hero-ctas">
           <a href="#order" class="btn btn-primary">Get My Audit</a>
-          <a href="#sample" class="btn btn-secondary">See a Sample Report</a>
+          <a href="#order" class="btn btn-secondary">See a Sample Report</a>
         </div>
         <div class="hero-meta">
           <span>24-hour turnaround</span>
@@ -942,9 +1173,180 @@
     </div>
   </section>
 
-  <!-- More sections coming next -->
+  <!-- ===== Social Proof ===== -->
+  <section class="section section-alt" id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span>What homeowners say</span>
+        <h2>Less staring at the wall. More crossing things off.</h2>
+        <p>A few notes from people who finally stopped putting it off.</p>
+      </div>
+      <div class="testimonials">
+        <article class="testimonial">
+          <div class="quote-mark" aria-hidden="true">"</div>
+          <blockquote>We bought a 1962 ranch and the to-do list lived in my head as a vague cloud of dread. The audit turned it into a real plan. We knocked out the top six items in a weekend.</blockquote>
+          <div class="who">
+            <div class="avatar" style="background:#0f4c43;">MR</div>
+            <div class="who-text">
+              <div class="name">Maya R.</div>
+              <div class="role">First-time homeowner · Portland, OR</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial">
+          <div class="quote-mark" aria-hidden="true">"</div>
+          <blockquote>Listed in three weeks and didn't want to hand over $3k to a stager. The audit told me exactly which fixes my buyers would notice. Sold over asking.</blockquote>
+          <div class="who">
+            <div class="avatar" style="background:#1f3b34;">DC</div>
+            <div class="who-text">
+              <div class="name">Daniel C.</div>
+              <div class="role">Pre-sale seller · Austin, TX</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial">
+          <div class="quote-mark" aria-hidden="true">"</div>
+          <blockquote>I manage four rentals and turning a unit between tenants used to take me two evenings of walking around with a notepad. Now I just upload photos and forward the PDF to my handyman.</blockquote>
+          <div class="who">
+            <div class="avatar" style="background:#3a2c1d;">PA</div>
+            <div class="who-text">
+              <div class="name">Priya A.</div>
+              <div class="role">Small landlord · Brooklyn, NY</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span>Questions</span>
+        <h2>Things people ask before ordering.</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>What kind of photos do I need?</span>
+            <span class="chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">Just clear phone photos — 3 to 5 per room, taken from the corners so we can see the full space. Good daylight helps. No special gear, no panoramas required. If we need anything else, we'll email you before we start.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Who creates the report?</span>
+            <span class="chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">A real human with construction or renovation experience reviews every photo. We use software to keep the report tidy and consistent, but every recommendation, priority, and price comes from a person who has done this work.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>How do I receive it?</span>
+            <span class="chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">As a polished PDF, emailed directly to you within 24 hours of submission. Easy to print, forward to a partner, or hand straight to a contractor.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>What if I'm not satisfied?</span>
+            <span class="chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">Tell us what's missing and we'll revise the report at no charge. If it still isn't useful, we'll refund you in full — no forms, no phone calls.</div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span>Do you work with contractors?</span>
+            <span class="chev" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">No — we don't take referral fees and we don't sell leads. Our only customer is you. The report is written so any contractor or handyman can quote it directly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Final CTA ===== -->
+  <section class="final-cta">
+    <div class="inner">
+      <h2>Stop staring at the list. Start working it.</h2>
+      <p>Send us photos today. Get your audit tomorrow.</p>
+      <a href="#order" class="btn btn-primary">Get My Audit</a>
+    </div>
+  </section>
+
+  <!-- ===== Order placeholder ===== -->
+  <section class="order" id="order">
+    <div class="container">
+      <div class="order-card">
+        <h2>Ready when you are.</h2>
+        <p>Email us your photos and we'll reply within an hour to confirm and get started. Most reports go out the same evening.</p>
+        <div class="btn-row">
+          <a href="mailto:hello@hometriage.com?subject=New%20HomeTriage%20Audit%20Request&amp;body=Hi%20HomeTriage%2C%0A%0AI'd%20like%20to%20order%20an%20audit.%20Photos%20attached.%0A%0ARooms%3A%0AAddress%20(optional)%3A%0A" class="btn btn-primary">Email My Photos</a>
+          <a href="mailto:hello@hometriage.com?subject=Sample%20HomeTriage%20Report&amp;body=Hi%20HomeTriage%2C%0A%0ACould%20you%20send%20me%20a%20sample%20report%3F%0A" class="btn btn-secondary">Request a Sample</a>
+        </div>
+        <p class="small">Or write us directly: <a href="mailto:hello@hometriage.com" style="color:var(--accent);font-weight:600;">hello@hometriage.com</a></p>
+      </div>
+    </div>
+  </section>
 
 </main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo" aria-label="HomeTriage home">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 11.5 12 4l9 7.5"/>
+              <path d="M5 10v10h14V10"/>
+              <path d="M10 20v-5h4v5"/>
+            </svg>
+          </span>
+          HomeTriage
+        </a>
+        <p class="tagline">Professional home audits, delivered in 24 hours.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:hello@hometriage.com">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 HomeTriage. All rights reserved.</span>
+      <span>Made for homeowners who'd rather be doing.</span>
+    </div>
+  </div>
+</footer>
 
 <script>
   // Sticky nav background on scroll
@@ -957,6 +1359,30 @@
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
+  })();
+
+  // FAQ accordion
+  (function () {
+    var items = document.querySelectorAll('.faq-item');
+    items.forEach(function (item) {
+      var btn = item.querySelector('.faq-q');
+      var panel = item.querySelector('.faq-a');
+      btn.addEventListener('click', function () {
+        var isOpen = item.classList.contains('open');
+        items.forEach(function (other) {
+          other.classList.remove('open');
+          var p = other.querySelector('.faq-a');
+          var b = other.querySelector('.faq-q');
+          p.style.maxHeight = null;
+          b.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
   })();
 </script>
 
