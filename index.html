@@ -421,12 +421,245 @@
   }
   .floating-tag .accent { color: #9fd5c8; }
 
+  /* ---------- Section primitives ---------- */
+  .section { padding: 96px 0; }
+  .section-tight { padding: 72px 0; }
+  .section-alt { background: var(--bg-2); }
+  .section-head {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 56px;
+  }
+  .section-head .eyebrow { margin-bottom: 16px; }
+  .section-head h2 {
+    font-size: clamp(32px, 4.2vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .section-head p {
+    color: var(--ink-2);
+    font-size: 18px;
+    margin: 0;
+  }
+
+  /* ---------- How It Works ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    position: relative;
+  }
+  .steps::before {
+    content: "";
+    position: absolute;
+    top: 32px;
+    left: 14%;
+    right: 14%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 16px);
+    z-index: 0;
+  }
+  .step {
+    position: relative;
+    z-index: 1;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 28px 26px 26px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .step:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .step .num {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: var(--accent);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    box-shadow: 0 6px 18px rgba(15, 76, 67, 0.25);
+    position: relative;
+  }
+  .step .num span {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+  }
+  .step .num svg {
+    position: absolute;
+    width: 22px; height: 22px;
+    bottom: -10px; right: -10px;
+    background: var(--bg);
+    color: var(--accent);
+    border-radius: 50%;
+    padding: 4px;
+    border: 1.5px solid var(--line);
+  }
+  .step h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .step p {
+    color: var(--ink-2);
+    margin: 0;
+    font-size: 15.5px;
+  }
+
+  /* ---------- What You Get ---------- */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .feature {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .feature:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: #d8cfbd;
+  }
+  .feature .icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+  }
+  .feature .icon svg { width: 22px; height: 22px; }
+  .feature h3 {
+    font-size: 19px;
+    margin-bottom: 6px;
+  }
+  .feature p {
+    color: var(--ink-2);
+    margin: 0;
+    font-size: 15px;
+  }
+
+  /* ---------- Pricing ---------- */
+  .pricing {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .price-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .price-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .price-card.featured {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+  .price-card.featured h3,
+  .price-card.featured .price,
+  .price-card.featured .price small { color: #fff; }
+  .price-card .badge {
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-md);
+  }
+  .price-card h3 {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+  .price-card .tag {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+  .price-card.featured .tag { color: #b8c2bf; }
+  .price {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+  .price small {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-left: 4px;
+  }
+  .price-card ul {
+    list-style: none;
+    padding: 0; margin: 0 0 28px;
+    display: grid;
+    gap: 12px;
+  }
+  .price-card li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--ink-2);
+  }
+  .price-card.featured li { color: #d8dedc; }
+  .price-card li svg {
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    color: var(--accent);
+    margin-top: 2px;
+  }
+  .price-card.featured li svg { color: #9fd5c8; }
+  .price-card .btn { margin-top: auto; width: 100%; }
+  .price-card.featured .btn-primary { background: var(--accent); }
+  .price-card.featured .btn-primary:hover { background: #0d574c; }
+  .price-card:not(.featured) .btn-primary {
+    background: var(--ink);
+  }
+  .price-card:not(.featured) .btn-primary:hover { background: #000; }
+  .pricing-note {
+    margin: 32px auto 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+
   /* ---------- Responsive ---------- */
   @media (max-width: 900px) {
     .hero { padding: 32px 0 72px; }
     .hero-grid { grid-template-columns: 1fr; gap: 48px; }
     .hero-art { max-width: 520px; margin: 0 auto; }
     .checklist { right: 0; width: 70%; }
+    .section { padding: 72px 0; }
+    .steps { grid-template-columns: 1fr; gap: 16px; }
+    .steps::before { display: none; }
+    .features { grid-template-columns: repeat(2, 1fr); }
+    .pricing { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) {
     .nav-inner { height: 64px; }
@@ -437,6 +670,12 @@
     .hero-ctas .btn { flex: 1; min-width: 140px; }
     .checklist { width: 78%; padding: 14px 16px; }
     .floating-tag { font-size: 11px; padding: 6px 10px; }
+    .section { padding: 56px 0; }
+    .section-head { margin-bottom: 40px; }
+    .section-head p { font-size: 16px; }
+    .features { grid-template-columns: 1fr; }
+    .price-card { padding: 28px 24px; }
+    .price { font-size: 44px; }
   }
 </style>
 </head>
@@ -536,6 +775,170 @@
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== How It Works ===== -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span>How it works</span>
+        <h2>From phone snapshots to a contractor-ready plan in 24 hours.</h2>
+        <p>No site visits, no scheduling. Three steps, one PDF.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">
+            <span>1</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <h3>Upload photos of your space</h3>
+          <p>Snap 3–5 photos per room from your phone. Wide angles, good light. That's it.</p>
+        </div>
+        <div class="step">
+          <div class="num">
+            <span>2</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <h3>We analyze and scope every improvement</h3>
+          <p>A real expert reviews your photos and writes a room-by-room punch list — with priorities and pricing.</p>
+        </div>
+        <div class="step">
+          <div class="num">
+            <span>3</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+          </div>
+          <h3>You receive your audit PDF in 24 hours</h3>
+          <p>A polished report lands in your inbox — ready to act on, share with a partner, or hand to a contractor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== What You Get ===== -->
+  <section class="section section-alt" id="what-you-get">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span>What you get</span>
+        <h2>A document you'll actually use.</h2>
+        <p>Every audit is a self-contained playbook for getting your home in shape — without the spiral of decision fatigue.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="8" y1="6" x2="21" y2="6"/>
+              <line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/>
+              <line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </div>
+          <h3>Prioritized task list by impact</h3>
+          <p>Every item is ranked by what matters most — safety, resale, comfort — so you know exactly where to start.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3>Realistic cost estimates per task</h3>
+          <p>Honest local-market ranges so you can budget — no inflated quotes, no vague "it depends."</p>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>DIY vs. hire recommendations</h3>
+          <p>Clear guidance on which jobs are worth a Saturday afternoon and which need a licensed pro.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="9" y1="13" x2="15" y2="13"/>
+              <line x1="9" y1="17" x2="15" y2="17"/>
+            </svg>
+          </div>
+          <h3>Ready-to-post job descriptions</h3>
+          <p>Copy-paste briefs for TaskRabbit, Thumbtack, or your group chat handyman — sized, scoped, and priced.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3>Before/after improvement vision</h3>
+          <p>A short narrative of what your home will feel like once the list is done — so the work has a why.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>Room-by-room breakdown</h3>
+          <p>Each space gets its own section — no jumbled mega-list, no guessing which task belongs where.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pricing ===== -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span>Pricing</span>
+        <h2>One report. One flat fee.</h2>
+        <p>Pick the size that fits. We'll deliver within 24 hours.</p>
+      </div>
+      <div class="pricing">
+        <div class="price-card">
+          <h3>Standard</h3>
+          <div class="tag">For a single room or focus area</div>
+          <div class="price">$79<small>/ one-time</small></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1 room covered in detail</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>24-hour turnaround</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Full PDF report with task list, costs, and job descriptions</li>
+          </ul>
+          <a href="#order" class="btn btn-primary">Get My Audit</a>
+        </div>
+
+        <div class="price-card featured">
+          <span class="badge">Most popular</span>
+          <h3>Full Home</h3>
+          <div class="tag">For a whole-house punch list</div>
+          <div class="price">$129<small>/ one-time</small></div>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Up to 5 rooms covered in detail</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>24-hour turnaround</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority queue — first in line each day</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Whole-home prioritization across rooms</li>
+          </ul>
+          <a href="#order" class="btn btn-primary">Get Full Home Audit</a>
+        </div>
+      </div>
+      <p class="pricing-note">No subscription. No upsell. One report, delivered.</p>
     </div>
   </section>
 
